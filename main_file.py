@@ -1,53 +1,110 @@
-def parse_resume_to_json(resume_text):
-    import re
-    
-    # Define regex patterns for extracting information
-    name_pattern = re.compile(r"^([A-Z][a-z]+ [A-Z][a-z]+)", re.MULTILINE)
-    contact_pattern = re.compile(r"Ph: ([+\d-]+)\nEmail: (.+?)\n", re.MULTILINE)
-    linkedin_pattern = re.compile(r"LinkedIn: (https?://[^\s]+)")
-    skills_pattern = re.compile(r"\n([A-Z ]{2,}.*?)\n\n", re.MULTILINE)
-    education_pattern = re.compile(r"\n(\d{4} - \d{4}.+?)\n\n", re.MULTILINE)
-    projects_pattern = re.compile(r"\n(\d{2} .+? Project Link:.+?)\n\n", re.MULTILINE)
-    achievements_pattern = re.compile(r"\nACHIEVEMENTS\n\n(.+?)\n\n", re.MULTILINE)
-    seminars_pattern = re.compile(r"\nSEMINARS / TRAININGS / WORKSHOPS\n\n(.+?)\n\n", re.MULTILINE)
-    extra_curricular_pattern = re.compile(r"\nEXTRA CURRICULAR ACTIVITIES\n\n(.+?)\n\n", re.MULTILINE)
-    personal_interests_pattern = re.compile(r"\nPERSONAL INTERESTS / HOBBIES\n\n(.+?)\n\n", re.MULTILINE)
-    
-    # Extract information using regex patterns
-    name = name_pattern.search(resume_text).group(1)
-    contact_info = contact_pattern.search(resume_text).groups()
-    linkedin = linkedin_pattern.search(resume_text).group(1)
-    skills = skills_pattern.search(resume_text).group(1).split()
-    education = education_pattern.findall(resume_text)
-    projects = projects_pattern.findall(resume_text)
-    achievements = achievements_pattern.search(resume_text).group(1).split('\n')
-    seminars = seminars_pattern.search(resume_text).group(1).split('\n')
-    extra_curricular = extra_curricular_pattern.search(resume_text).group(1).split('\n')
-    personal_interests = personal_interests_pattern.search(resume_text).group(1).split('\n')
-
-    # Compile extracted information into a dictionary
-    resume_json = {
-        "name": name,
-        "contact_info": {
-            "phone": contact_info[0],
-            "email": contact_info[1],
-        },
-        "linkedin": linkedin,
-        "skills": skills,
-        "education": education,
-        "projects": projects,
-        "achievements": achievements,
-        "seminars_trainings_workshops": seminars,
-        "extra_curricular_activities": extra_curricular,
-        "personal_interests_hobbies": personal_interests,
+{
+  "name": "ISHITA BHATNAGAR",
+  "degree": "B.Tech. - CSE - Computer Networking",
+  "contact_info": {
+    "phone": "+91-7976678597",
+    "email": "ib8073@srmist.edu.in",
+    "location": "Chennai, Tamil Nadu, India - 603203",
+    "linkedin": "https://www.linkedin.com/in/ishita-bhatnagar-6b2119230/"
+  },
+  "skills": [
+    "HTML5",
+    "CSS",
+    "C++",
+    "FIGMA",
+    "SQL",
+    "Lens Studio",
+    "Tableau",
+    "Python",
+    "Canva",
+    "Visual Studio",
+    "Microsoft Excel",
+    "Microsoft PowerPoint",
+    "UI Development",
+    "GitHub",
+    "JIRA",
+    "Kanban"
+  ],
+  "summary": "A driven and dedicated Computer Science Engineering student...",
+  "education": [
+    {
+      "year": "2021 - 2025",
+      "institution": "SRM Institute of Science & Technology, Kattankulathur",
+      "degree": "B.Tech. - CSE - Computer Networking",
+      "CGPA": "8.84 / 10"
+    },
+    {
+      "year": "2020",
+      "institution": "St. Mary's Convent Sr. Sec. school, New Fatehpura, Udaipur",
+      "degree": "12th",
+      "board": "CBSE",
+      "percentage": "74.80 / 100"
+    },
+    {
+      "year": "2018",
+      "institution": "St. Mary's Convent Sr. Sec. school, New Fatehpura, Udaipur",
+      "degree": "10th",
+      "board": "CBSE",
+      "percentage": "85.60 / 100"
     }
-
-    return resume_json
-
-# Example usage
-resume_text = """
-<Resume text here>
-"""
-
-resume_json = parse_resume_to_json(resume_text)
-print(resume_json)
+  ],
+  "projects": [
+    {
+      "date": "13 Mar, 2024 - 01 May, 2024",
+      "name": "Finwise",
+      "skills": "UI Development",
+      "link": "https://github.com/gitcoderstd/Finance-app-design-"
+    },
+    {
+      "date": "01 Nov, 2023 - 22 Dec, 2023",
+      "name": "Portfolio",
+      "skills": "HTML, CSS",
+      "link": "https://github.com/gitcoderstd/Portfolio"
+    },
+    {
+      "date": "15 Sep, 2023 - 15 Nov, 2023",
+      "name": "Bike Riding London Dataset",
+      "skills": "Data Visualization, Tableau",
+      "link": "https://github.com/gitcoderstd/BIKE-RIDE-DATA-PORTFOLIO-IN-LONDON-DATASET"
+    },
+    {
+      "date": "20 Sep, 2023 - 25 Sep, 2023",
+      "name": "SIS-Smart Irrigation System",
+      "skills": "UI Development",
+      "link": "https://github.com/gitcoderstd/Agritech_UI"
+    }
+  ],
+  "achievements": [
+    "Winner of Code for good 2024 hackathon by JP Morgan Chase & co, Mumbai"
+  ],
+  "seminars_trainings_workshops": [
+    {
+      "date": "28 Aug, 2023",
+      "name": "UIUX Masterclass",
+      "institution": "SRM Institute of Science & Technology, Kattankulathur",
+      "skills": "UI Development"
+    },
+    {
+      "date": "14 Aug, 2023",
+      "name": "Snapchat Lens Workshop",
+      "institution": "Snapchat opinion leader & Aaruush, SRM",
+      "skills": "Lens Studio"
+    }
+  ],
+  "extra_curricular_activities": [
+    "Committee Head, Team Outreach, Aaruush'23",
+    "Team Member, Placfv's",
+    "Gold Medal in Inter-Department Discuss throw competition in SRM University.",
+    "Gold Medal in Inter-Department Shot put competition in SRM University.",
+    "State level Bronze Medalist in Roll ball held in Jaipur representing St. Mary's convent Sr. Sec. School, Udaipur"
+  ],
+  "personal_interests_hobbies": [
+    "Learning about Psychology",
+    "Reading books",
+    "Travel"
+  ],
+  "web_links": {
+    "github": "https://github.com/gitcoderstd",
+    "leetcode": "https://leetcode.com/u/ib8073/"
+  }
+}
